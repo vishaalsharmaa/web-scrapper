@@ -1,0 +1,80 @@
+<section class="py-5">
+    <div class="row" *ngIf="scrappedDetails">
+        <div class="col-md-4">
+            <div class="mb-5">
+                <label for="brandWebsite" class="form-label label-display">Brand Website</label>
+                <input type="text" class="form-control full-width" id="brandWebsite" [value]="scrappedDetails.brandURL">
+            </div>
+            <div class="mb-5">
+                <label for="brandTitle" class="form-label label-display">Brand Title</label>
+                <input type="text" class="form-control full-width" id="brandTitle" [value]="scrappedDetails.brandTitle">
+            </div>
+            <div class="mb-5">
+                <label for="brandLogo" class="form-label label-display">Brand Logo</label>
+                <div class="card" id="brandLogo">
+                    <div class="card-body">
+                        <img [src]="scrappedDetails.brandLogoUrl" [style.height.%]="25" [style.width.%]="60"
+                            alt="Brand Logo">
+                    </div>
+                </div>
+                <input id="imageUpload" class="btn" type="file" #fileInput style="visibility: hidden;"
+                    accept=".png, .jpeg, .jpg" (change)="onFileSelected($event)" />
+
+                <button mat-raised-button color="primary" (click)="fileInput.click()">
+                    <mat-icon>upload</mat-icon>
+                    Upload Logo
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-5">
+                <label for="brandColor" class="form-label label-display">Brand Colors</label>
+                <br>
+
+                <div class="mini-container" *ngFor="let col of scrappedDetails.brandColors; let i = index">
+                    <!-- <span class="brand-color" [style.background-color]="col"></span> -->
+                    <input class="brand-color" [style.background]="col" />
+
+                    <span class="brand-color-code">{{ col }}</span>
+                </div>
+
+                <input class="hidden-color-picker" id="uploadColor" name="uploadColor" [(colorPicker)]="selectedColor"
+                    [style.background]="selectedColor" (colorPickerClose)="updateColor($event)" />
+
+                <button mat-raised-button color="primary" (click)="openColorPicker()">
+                    <mat-icon>add</mat-icon>
+                    Add Color</button>
+
+
+            </div>
+            <div class="mb-5">
+                <label for="brandFonts" class="form-label label-display">Typography</label>
+                <select id="brandFonts" class="form-select" aria-label="Default select example">
+                    <option *ngFor="let col of scrappedDetails.typography;" [value]="scrappedDetails.typography">
+                        {{scrappedDetails.typography}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="mb-5">
+                <label for="brandDescription" class="form-label label-display">Brand Description</label>
+                <textarea class="form-control" id="brandDescription" rows="8"
+                    [value]="scrappedDetails.brandDescription"></textarea>
+            </div>
+
+            <div class="mb-5">
+                <label for="brandKeywords" class="form-label label-display">Brand Keywords</label>
+                <textarea class="form-control" id="brandKeywords" rows="8"
+                    [value]="scrappedDetails.keywords"></textarea>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="d-inline-flex">
+    <button mat-raised-button color="warn" (click)="routeHome()">
+        <mat-icon>home</mat-icon>
+        Back to home</button>
+</section>

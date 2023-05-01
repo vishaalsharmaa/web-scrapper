@@ -1,0 +1,23 @@
+<div class="d-flex align-items-center justify-content-center vh-100 flex-column gap-4">
+    <img src="https://static.roobykon.com/assets/scraping/scrap1-7c90fcf651909feb1ab9a97a901fef1cc4e4385b07488e5bd18ad541020054c2.png"
+        [height]="240" 
+        [width]="420">
+    <form class="d-flex" [formGroup]="scrapperForm" (ngSubmit)="scrapURL()">
+        <mat-form-field 
+            class="me-1" 
+            [style.width.px]="500" 
+            appearance="outline">
+            <mat-label>Enter URL</mat-label>
+            <input 
+                formControlName="websiteURL"
+                id="websiteURL_" 
+                name="websiteURL_" 
+                matInput>
+        </mat-form-field>
+        <button
+            mat-raised-button
+            color="primary"
+            [disabled]="!scrapperForm.valid">Scrap
+        </button>
+    </form>
+</div>

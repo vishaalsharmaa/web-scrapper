@@ -1,0 +1,42 @@
+.full-width {
+    width: 100%;
+  }
+
+.label-display {
+  font-size: 22px;
+  color: purple;
+}
+
+.brand-color-picker {
+  margin: 10px;
+  height: 55px;
+  width: 55px
+}
+
+.mini-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.brand-color {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.brand-color-code {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  margin: 0;
+  color: purple;
+}
+
+.hidden-color-picker {
+  visibility: hidden;
+  height: 5px;
+  width: 5px;
+}
