@@ -1,10 +1,23 @@
-# WebsiteScrapper
+# Web Scraper Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
+This is a web scraper project that fetches generic information from a website. The project is built using Angular CLI for the frontend, and Express and NodeJS for the backend. The data is stored in a MongoDB database.
 
-## Development server
+## Technologies Used
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular CLI
+- Express
+- NodeJS
+- MongoDB
+- Cheerio
+- Axios
+- GetImages From Colors library
+
+## Features
+
+- Scrapes generic information from a website
+- Extracts colors from images on the website
+- Stores data in a MongoDB database
 
 ## Code scaffolding
 
