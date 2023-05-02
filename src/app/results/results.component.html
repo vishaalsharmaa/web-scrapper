@@ -17,18 +17,9 @@
                             alt="Brand Logo">
                     </div>
                 </div>
-                <input 
-                    id="imageUpload" 
-                    class="btn" 
-                    type="file" 
-                    #fileInput 
-                    style="visibility: hidden;"
-                    
-                    ng2FileSelect 
-                    [uploader]="uploader"
-                    accept="image/x-png,image/gif,image/jpeg,image/jpg" 
+                <input id="imageUpload" class="btn" type="file" #fileInput style="visibility: hidden;"
+                    accept=".png, .jpeg, .jpg" ng2FileSelect accept="image/x-png,image/gif,image/jpeg,image/jpg"
                     (change)="onFileSelected($event)" />
-                    <!-- accept=".png, .jpeg, .jpg"  -->
 
                 <button mat-raised-button color="primary" (click)="fileInput.click()">
                     <mat-icon>upload</mat-icon>
@@ -42,9 +33,7 @@
                 <br>
 
                 <div class="mini-container" *ngFor="let col of scrappedDetails.brandColors; let i = index">
-                    <!-- <span class="brand-color" [style.background-color]="col"></span> -->
                     <input class="brand-color" [style.background]="col" />
-
                     <span class="brand-color-code">{{ col }}</span>
                 </div>
 

@@ -88,6 +88,7 @@ export class ResultsComponent implements OnInit {
         .scrapeColors(file)
         .then((colors) => {
           this.scrappedDetails.brandColors = colors;
+          this.spinner.hide();
         })
         .catch((error) => {
           console.error('Something went wrong ', error);
@@ -97,15 +98,15 @@ export class ResultsComponent implements OnInit {
           this.spinner.hide();
         });
 
+      this.uploader.uploadAll();
+
       this.uploader.onAfterAddingFile = (file) => {
         file.withCredentials = false;
       };
 
       this.uploader.onCompleteItem = (item: any, status: any) => {
-        console.log('onCompleteItem: ', status, item);
+        console.log('onCompleteItem status: ', status);
         console.log('Uploaded File Details:', item);
-        this.toastr.success('File successfully uploaded!');
-        this.spinner.hide();
       };
     }
   }
