@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ScrapperService } from '../service/scrapper.service';
 import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from "ngx-spinner";
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { FileUploader } from 'ng2-file-upload';
 
 interface Scrap {
   brandTitle: string;
@@ -26,6 +26,11 @@ export class ResultsComponent implements OnInit {
   public selectedColor: string;
   scrappedDetails: Scrap;
   public selectedFile: File = null;
+
+  public uploader: FileUploader = new FileUploader({
+    url: `http://localhost:3000/api/colors`,
+    itemAlias: 'image',
+  });
 
   constructor(
     private route: ActivatedRoute,
@@ -75,14 +80,33 @@ export class ResultsComponent implements OnInit {
       };
     }
 
-    console.log("file" , file);
+    console.log('file', file);
 
     if (file) {
-      this.scrapeService.scrapeColors(file).then((colors) => {
-        this.scrappedDetails.brandColors = colors;
-      }).catch((error) => {
-        console.error(error);
-      });
+      this.spinner.show();
+      this.scrapeService
+        .scrapeColors(file)
+        .then((colors) => {
+          this.scrappedDetails.brandColors = colors;
+        })
+        .catch((error) => {
+          console.error('Something went wrong ', error);
+          this.toastr.error(error.message, 'Server Error', {
+            timeOut: 10 * 1000,
+          });
+          this.spinner.hide();
+        });
+
+      this.uploader.onAfterAddingFile = (file) => {
+        file.withCredentials = false;
+      };
+
+      this.uploader.onCompleteItem = (item: any, status: any) => {
+        console.log('onCompleteItem: ', status, item);
+        console.log('Uploaded File Details:', item);
+        this.toastr.success('File successfully uploaded!');
+        this.spinner.hide();
+      };
     }
   }
 

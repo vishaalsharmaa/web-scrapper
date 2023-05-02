@@ -9,8 +9,8 @@ import { catchError } from 'rxjs/operators';
 export class ScrapperService {
   public prefix: string = 'http://localhost:3000';
 
-  public API_URL: string = `${this.prefix}/scrap`;
-  public API_SCRAP_COLORS: string = `${this.prefix}/colors`;
+  public API_URL: string = `${this.prefix}/api/scrap`;
+  public API_SCRAP_COLORS: string = `${this.prefix}/api/colors`;
 
   constructor(private http: HttpClient) {}
 

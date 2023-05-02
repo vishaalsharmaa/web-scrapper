@@ -11,7 +11,7 @@ This is a web scraper project that fetches generic information from a website. T
 - MongoDB
 - Cheerio
 - Axios
-- GetImages From Colors library
+- get-image-colors
 
 ## Features
 

@@ -17,8 +17,18 @@
                             alt="Brand Logo">
                     </div>
                 </div>
-                <input id="imageUpload" class="btn" type="file" #fileInput style="visibility: hidden;"
-                    accept=".png, .jpeg, .jpg" (change)="onFileSelected($event)" />
+                <input 
+                    id="imageUpload" 
+                    class="btn" 
+                    type="file" 
+                    #fileInput 
+                    style="visibility: hidden;"
+                    
+                    ng2FileSelect 
+                    [uploader]="uploader"
+                    accept="image/x-png,image/gif,image/jpeg,image/jpg" 
+                    (change)="onFileSelected($event)" />
+                    <!-- accept=".png, .jpeg, .jpg"  -->
 
                 <button mat-raised-button color="primary" (click)="fileInput.click()">
                     <mat-icon>upload</mat-icon>

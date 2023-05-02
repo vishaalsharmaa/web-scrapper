@@ -14,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { NgxSpinnerModule } from "ngx-spinner";
-
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     LoadingBarHttpClientModule,
     LoadingBarModule,
     NgxSpinnerModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
